@@ -15,4 +15,4 @@ if __name__ == "__main__":
         roots = solve_quartic(a, b, c, d, e)
         for i, r in enumerate(roots, 1):
             print(f"r{i} = {mp.nstr(r, 10)}")
-        print('\n')
+        print([mp.nstr(abs(a*r**4 + b*r**3 + c*r**2 + d*r +e), 10) for r in roots], "\n")

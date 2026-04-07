@@ -44,6 +44,14 @@ def solve_quartic(a, b, c, d, e, tol = mp.mpf(1e-12)):
                 best_roots = roots
 
     roots = best_roots
+
+    f = lambda x: a*x**4 + b*x**3 + c*x**2 + d*x + e
+    df = lambda x: 4*a*x**3 + 3*b*x**2 + 2*c*x + d
+    for _ in range(2):
+        for i in range(len(roots)):
+            if(df(roots[i]) == 0):
+                continue
+            roots[i] = roots[i] - f(roots[i])/df(roots[i])
     
     def clean(z):
         real = 0 if abs(mp.re(z)) < tol else mp.re(z)
