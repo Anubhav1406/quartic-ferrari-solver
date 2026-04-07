@@ -71,7 +71,7 @@ def solve_cubic(a, b, c, d, tol=mp.mpf('1e-12')):
         imag = 0 if abs(mp.im(z)) < tol else mp.im(z)
         return mp.mpc(real, imag)
 
-    return [clean(r) for r in roots]
+    return [clean(r) for r in sorted(roots, key=lambda z: (abs(z), mp.re(z), mp.im(z)))]
 
 
 # -----------------------
