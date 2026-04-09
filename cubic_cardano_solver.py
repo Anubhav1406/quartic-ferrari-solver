@@ -22,7 +22,7 @@ import mpmath as mp
 mp.mp.dps = 50  # precision
 
 
-def solve_cubic(a, b, c, d, tol=mp.mpf('1e-12')):
+def solve_cubic(a, b, c, d, tol=mp.mpf('1e-25')):
     if abs(a) == 0:
         raise ValueError("Not a cubic equation.")
 

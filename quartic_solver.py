@@ -3,7 +3,7 @@ from cubic_cardano_solver import solve_cubic
 
 mp.mp.dps = 50 # precision
 
-def solve_quartic(a, b, c, d, e, tol = mp.mpf(1e-12)):
+def solve_quartic(a, b, c, d, e, tol = mp.mpf(1e-25)):
     if abs(a) == 0:
         raise ValueError("Not a quartic")
     
