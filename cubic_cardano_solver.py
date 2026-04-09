@@ -76,8 +76,8 @@ def solve_cubic(a, b, c, d, tol=mp.mpf('1e-12')):
 
     # Clean numerical noise
     def clean(z):
-        real = 0 if abs(mp.re(z)) < tol*scale else mp.re(z)
-        imag = 0 if abs(mp.im(z)) < tol*scale else mp.im(z)
+        real = 0 if abs(mp.re(z)) < tol else mp.re(z)
+        imag = 0 if abs(mp.im(z)) < tol else mp.im(z)
         return mp.mpc(real, imag)
 
     return [clean(r) for r in sorted(roots, key=lambda z: (abs(z), mp.re(z), mp.im(z)))]
