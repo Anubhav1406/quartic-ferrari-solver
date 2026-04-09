@@ -7,7 +7,6 @@ def solve_quartic(a, b, c, d, e, tol = mp.mpf(1e-12)):
     if abs(a) == 0:
         raise ValueError("Not a quartic")
     
-    scale = max(abs(a), abs(b), abs(c), abs(d), abs(e))
     shift = b/(4*a)
     
     A = c/a - 6*(shift)**2
@@ -20,7 +19,7 @@ def solve_quartic(a, b, c, d, e, tol = mp.mpf(1e-12)):
 
     for t in t_values:
         for R in [mp.sqrt(2*t - A), -mp.sqrt(2*t - A)]:
-            if abs(R) < tol*scale:
+            if abs(R) < tol:
                 roots = [
                     mp.sqrt(t+t**2-C)-shift,
                     -mp.sqrt(t+t**2-C)-shift,
@@ -50,7 +49,7 @@ def solve_quartic(a, b, c, d, e, tol = mp.mpf(1e-12)):
     df = lambda x: 4*a*x**3 + 3*b*x**2 + 2*c*x + d
     for _ in range(2):
         for i in range(len(roots)):
-            if abs(df(roots[i])) < tol*scale:
+            if abs(df(roots[i])) < tol:
                 continue
             roots[i] = roots[i] - f(roots[i])/df(roots[i])
     
